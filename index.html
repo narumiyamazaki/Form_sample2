@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/parsley.min.js"></script>
+    <script src="js/ja.js"></script>
+    <script src="js/ja.extra.js"></script>
+    <title>Document</title>
+</head>
+    <body>
+        <div class="p-backgroundColor">    
+            <section class="l-main">
+                <div class="p-form__wrap">
+                    <form class="p-form" data-parsley-validate name="entry-form"  action="" method="post" data-parsley-trigger="keyup focusout change input">
+                        <table class="p-form__main">
+                            <tbody>
+                                <tr>
+                                    <th class="p-form__items">基本情報登録
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td>
+                                        <ul class="p-form__registration--box">
+                                            <li>
+                                                <label class="p-form__registration--basicInformation">
+                                                    <!--required=""は必須項目かどうかを示す-->
+                                                    <input type="radio" required="" class="p-form__radio--registerd" value="登録済み" name="register" data-parsley-error-message="どちらか選択してください。" data-parsley-errors-container="#error-register"><span class="p-form__registration--basicInformation--text">登録済み</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="p-form__registration--basicInformation">
+                                                    <input type="radio" class="p-form__radio--unregistered" value="未登録" name="register"><span class="p-form__registration--basicInformation--text">未登録</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div id="error-register"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">お名前
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td class="p-form__nameBox">
+                                        <span>名字</span>
+                                        <label class="p-form__registration--name">
+                                            <input type="text" required="" class="p-form__name" data-parsley-error-message="名前を入力してください" placeholder="（全角）[例：ほげた]" data-parsley-id="parsley-id-3">
+                                        </label>
+                                        <span>名前</span>
+                                        <label class="p-form__registration--name">
+                                            <input type="text" required="" class="p-form__name" data-parsley-error-message="名前を入力してください" placeholder="（全角）[例：ほげた]" data-parsley-id="parsley-id-3">
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">フリガナ
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td>
+                                        <label class="p-form__registration--kanaName">
+                                            <!--patterはカタカナのみを入力規則として認めている-->
+                                            <input type="text" pattern="[\u30A1-\u30F6]*" data-parsley-error-message="カタカナで入力してください" required="" class="p-form__kanaName" placeholder="（全角）[例：ホゲタ ホゲタロウ]">
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">E-mailのタイプ
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <label class="p-form__registration--mailType">
+                                                    <input type="checkbox" name="mailType" class="p-form__mailType--pc" required="" data-parsley-error-message="どちらか選択してください" data-parsley-mincheck="1" data-parsley-errors-container="#error-mailType"><span class="p-form__registration--mailType--text">PC</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="p-form__registration--mailType">
+                                                    <input type="checkbox" name="mailType" class="p-form__mailType--mobile"><span class="p-form__registration--mailType--text">mobile</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div id="error-mailType"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">E-mail
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td>
+                                        <label class="p-form__registration--mailAdress">
+                                            <input type="email" required=""　data-parsley-error-message="メールアドレスを入れてください" class="p-form__mailAdress" data-parsley-type="email">
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">E-mail（確認）
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td>
+                                        <label class="p-form__registration--mailAdress">
+                                            <input type="email" required="" data-parsley-type="url" class="p-form__mailAdress">
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">電話番号</th>
+                                    <td>
+                                        <label class="p-form__registration--tel">
+                                            <input type="tel" class="p-form__tel">
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">お問い合わせ種類
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <label class="p-form__registration--inquiryType">
+                                                    <input type="checkbox" required="" data-parsley-error-message="1つ以上チェックを入れてください。"　name="inquiryType" class="p-form__mailType--pc" data-parsley-mincheck="1" data-parsley-errors-container="#error-inquiryType" data-parsley-class-handler="#element-inquiryType" data-parsley-multiple="inquiry"><span class="p-form__registration--inquiryType--text">登録会</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="p-form__registration--inquiryType">
+                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">見学</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="p-form__registration--inquiryType">
+                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text" >面接</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="p-form__registration--inquiryType">
+                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">セミナー・研修</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="p-form__registration--inquiryType">
+                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">相談</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label class="p-form__registration--inquiryType">
+                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">その他</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div id="error-inquiryType"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">お問い合わせ内容</th>
+                                    <td>
+                                        <label class="p-form__registration--inquiry">
+                                            <textarea class="p-form__inquiry"></textarea>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items" data-parsley-multiple="agree">プライバシーポリシーに同意する
+                                        <span class="p-form__required">必須</span>
+                                    </th>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <label class="p-form__registration--privacyPolicy--agree">
+                                                    <input type="checkbox" required="" class="p-form__privacyPolicy--agree" id="privacyPolicy--agree" data-parsley-error-message="必ず同意してください。"><span class="p-form__registration--privacyPolicy--text">はい</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-form__items">プライバシーポリシー</th>
+                                    <td>
+                                        <div class="p-form__registration--privacyPolicy">
+                                            【個人情報の利用目的】<br><br>
+                                            テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。 テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                        </div>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="p-fom__submit--btn">
+                        <input type="submit" value="送信" class="p-form__submit" id="form-submit">
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
