@@ -9,6 +9,7 @@
     <script src="js/parsley.min.js"></script>
     <script src="js/ja.js"></script>
     <script src="js/ja.extra.js"></script>
+    <script src="js/send-btn.js"></script>
     <title>Document</title>
 </head>
     <body>
@@ -32,13 +33,14 @@
                                             </li>
                                             <li>
                                                 <label class="p-form__registration--basicInformation">
-                                                    <input type="radio" class="p-form__radio--unregistered" value="未登録" name="register"><span class="p-form__registration--basicInformation--text">未登録</span>
+                                                    <input type="radio" required="" class="p-form__radio--unregistered" value="未登録" name="register"><span class="p-form__registration--basicInformation--text">未登録</span>
                                                 </label>
                                             </li>
                                         </ul>
                                         <div id="error-register"></div>
                                     </td>
                                 </tr>
+                                <!--漢字の氏名-->
                                 <tr>
                                     <th class="p-form__items">お名前
                                         <span class="p-form__required">必須</span>
@@ -53,19 +55,27 @@
                                         <span class="p-form__firstName--text">名前</span>
                                         <div>
                                             <label class="p-form__registration--name">
-                                                <input type="text" required="" class="p-form__name" data-parsley-error-message="名前を入力してください" placeholder="（全角）[例：ほげた]" data-parsley-id="parsley-id-3">
+                                                <input type="text" required="" class="p-form__name" data-parsley-error-message="名前を入力してください" placeholder="（全角）[例：ほげたろう]" data-parsley-id="parsley-id-3">
                                             </label>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
+                                    <!--フリガナ部分-->
                                     <th class="p-form__items">フリガナ
                                         <span class="p-form__required">必須</span>
                                     </th>
-                                    <td>
+                                    <!--苗字と名前に分ける-->
+                                    <td class="p-form__name--kanaBox">
+                                        <span class="p-form__lastName--text">名字</span>
                                         <label class="p-form__registration--kanaName">
                                             <!--patterはカタカナのみを入力規則として認めている-->
-                                            <input type="text" pattern="[\u30A1-\u30F6]*" data-parsley-error-message="カタカナで入力してください" required="" class="p-form__kanaName" placeholder="（全角）[例：ホゲタ ホゲタロウ]">
+                                            <input type="text" pattern="[\u30A1-\u30F6]*" data-parsley-error-message="カタカナで入力してください" required="" class="p-form__kanaName" placeholder="（全角）[例：ホゲタ]">
+                                        </label>
+                                        <span class="p-form__firstName--text">名前</span>
+                                        <label class="p-form__registration--kanaName">
+                                            <!--patterはカタカナのみを入力規則として認めている-->
+                                            <input type="text" pattern="[\u30A1-\u30F6]*" data-parsley-error-message="カタカナで入力してください" required="" class="p-form__kanaName" placeholder="（全角）[例：ホゲタロウ]">
                                         </label>
                                     </td>
                                 </tr>
@@ -124,34 +134,13 @@
                                     <td>
                                         <ul>
                                             <li>
-                                                <label class="p-form__registration--inquiryType">
-                                                    <input type="checkbox" required="" data-parsley-error-message="1つ以上チェックを入れてください。"　name="inquiryType" class="p-form__mailType--pc" data-parsley-mincheck="1" data-parsley-errors-container="#error-inquiryType" data-parsley-class-handler="#element-inquiryType" data-parsley-multiple="inquiry"><span class="p-form__registration--inquiryType--text">登録会</span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label class="p-form__registration--inquiryType">
-                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">見学</span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label class="p-form__registration--inquiryType">
-                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text" >面接</span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label class="p-form__registration--inquiryType">
-                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">セミナー・研修</span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label class="p-form__registration--inquiryType">
-                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">相談</span>
-                                                </label>
-                                            </li>
-                                            <li>
-                                                <label class="p-form__registration--inquiryType">
-                                                    <input type="checkbox" name="inquiryType" data-parsley-multiple="inquiry" class="p-form__mailType--pc"><span class="p-form__registration--inquiryType--text">その他</span>
-                                                </label>
+                                                <select name="inquiryType" data-parsley-error-message="1つ以上チェックを入れてください。" class="p-form__mailType--pc" data-parsley-mincheck="1" data-parsley-errors-container="#error-inquiryType" data-parsley-class-handler="#element-inquiryType" data-parsley-multiple="inquiry">
+                                                <option class="p-form__registration--inquiryType--text" required="" data-parsley-multiple="inquiry" value="登録会">登録会</option>
+                                                <option class="p-form__registration--inquiryType--text" required="" data-parsley-multiple="inquiry" value="見学">見学</option>
+                                                <option class="p-form__registration--inquiryType--text" required="" data-parsley-multiple="inquiry" value="面接">面接</option>
+                                                <option class="p-form__registration--inquiryType--text" required="" data-parsley-multiple="inquiry" value="面接">セミナー・研修</option>
+                                                <option class="p-form__registration--inquiryType--text" required="" data-parsley-multiple="inquiry" value="面接">相談</option>
+                                                <option class="p-form__registration--inquiryType--text" required="" data-parsley-multiple="inquiry" value="面接">その他</option>
                                             </li>
                                         </ul>
                                         <div id="error-inquiryType"></div>
@@ -191,7 +180,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="p-fom__submit--btn">
+                        <div class="p-form__submit--btn">
                         <input type="submit" value="送信" class="p-form__submit" id="form-submit">
                         </div>
                     </form>
