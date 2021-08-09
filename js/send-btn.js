@@ -19,6 +19,11 @@ $(function() {
             //もし必須項目が空なら
             if ($('form input:required').eq(e).val() === "") {
                 flag = false;
+            //プライバシーポリシーがチェックされてされていなければ
+            }else if( $('#privacyPolicy--agree').prop('checked') == false ){
+                flag = false;
+            }else{
+                //何もしない
             }
         });
         //全て埋まっていたら
