@@ -16,10 +16,16 @@ $(function() {
         let flag = true;
         //必須項目をひとつずつチェック
         $('form input:required').each(function(e) {
-            //もし必須項目が空なら
+            //もしinput textの必須項目が空なら
             if ($('form input:required').eq(e).val() === "") {
                 flag = false;
-            //プライバシーポリシーがチェックされてされていなければ
+                //メールアドレスのタイプが選ばれていない場合は
+            }else if($(".p-form__mailType:checked").length == 0){
+                flag = false;
+                //基本情報登録がされてされていなければ
+            }else if(!$('input[name=register]').is(":checked")){
+                flag = false;
+                //プライバシーポリシーがチェックされてされていなければ
             }else if( $('#privacyPolicy--agree').prop('checked') == false ){
                 flag = false;
             }else{
